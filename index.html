@@ -1,0 +1,91 @@
+<html>
+	<body>
+		<h1>Using a 3DS C-stick as a trackpoint</h1>
+		
+		<p>
+			This is fairly simple but there's not much information available on it, so I made this little guide.
+
+			<video controls>
+				<source src="./videos/3ds-c-stick-trackpoint.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video> 
+		</p>
+
+
+		<h2>Circuitry</h2>
+
+		<p>This is the C-stick module:</p>
+
+		<img alt="3DS C-stick" src="./images/3ds-c-stick.jpg" />
+
+		<p>The C-stick module has 4 pressure sensistive variable resistors:</p>
+
+		<img alt="3DS C-stick variable resistors" src="./images/3ds-c-stick-variable-resistors.jpg" />
+
+		<p>These are the two circuits (one for each axis) we'll use with the C-stick module:</p>
+
+		<img alt="3DS C-stick circuit 1" src="./images/3ds-c-stick-circuit1.jpg" />
+		<br />
+		<img alt="3DS C-stick circuit 2" src="./images/3ds-c-stick-circuit2.jpg" />
+
+		<ul>
+			<li>Red is connected to VCC.</li>
+			<li>White is connected to ground.</li>
+			<li>Green is between 2 of the variable resistors and where we read the voltage.</li>
+		</ul>
+
+
+		<h2>Connecting wires</h2>
+
+		<p>In order to connect wires to the C-stick module you'll need a 4-pin FFC (FPC) ZIF connector with 1mm pitch. These are usually surface mount, so a PCB is preferred. However if you don't want to use a PCB, this is what I did:
+
+		<ol>
+			<li>
+				<p>3D print this:</p>
+
+				<img alt="3D-printed ZIF connector mount for hand wiring" src="./images/zif-connector-mount1.png" />
+				<ul>
+					<li><a href="./parts/zif-connector-mount.scad">OpenSCAD file</a></li>
+					<li><a href="./parts/zif-connector-mount.stl">STL file</a></li>
+				</ul>
+			</li>
+
+			<li>
+				<p>Put copper tape around here:</p>
+
+				<img alt="3D-printed ZIF connector mount for hand wiring with copper tape" src="./images/zif-connector-mount2.png" />
+			</li>
+
+			<li>
+				<p>Cut the tape at the grooves:</p>
+
+				<img alt="3D-printed ZIF connector mount for hand wiring with copper tape cut into 4 pads" src="./images/zif-connector-mount3.png" />
+			</li>
+
+			<li><p>Bend the connector pins into a fan so they line up with the 4 areas of on the copper tape. Now you have some larger pads you can solder both the pins and wires to.</p></li>
+
+			<li>
+				<p>Final result:</p>
+
+				<img alt="3D-printed ZIF connector mount for hand wiring soldered to wires" src="./images/zif-connector-mount-final.jpg" />
+			</li>
+		</ol>
+
+
+		<h2>Signal strength</h2>
+
+		<p>Signal strength is weak with the stock nub and a 10bit ADC. A 20mm 3D-printed nub helps. Using a 12bit ADC for a 4x increase in resolution should be a good boost.</p>
+
+
+		<h2>Firmware</h2>
+
+		<a href="./firmware/arduino.cpp">Basic firmware for Arduino</a> (Bad deadzone implementation; prevents small movements.)
+
+
+		<h2>Buying</h2>
+
+		<p>3DS C-stick modules are available on AliExpress/Alibaba. Single unit is around 15 USD. When buying in bulk (20+ units) the price goes down to around 5 USD.</p>
+
+		<p>The ZIF connectors can be found in many electonics stores (eg/ Mouser) or eBay. These typically cost under 1 USD each but you may have to buy a multiple.</p>
+	</body>
+</html>
